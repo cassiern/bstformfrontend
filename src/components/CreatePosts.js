@@ -21,7 +21,7 @@ class CreatedPosts extends Component {
 				<input placeholder="Add Image" type="text" name="image" onChange={this.updatePosts} value={this.state.image}/> <br />
 				<button type="submit">Submit</button>
 			</form>
-			<img src={this.state.image} alt="Image"/>
+			<img src={this.state.image} alt="Uploaded media"/>
 			<h2>{this.state.text}</h2> 
 			</div>
 

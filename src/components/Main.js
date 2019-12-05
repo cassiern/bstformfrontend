@@ -17,13 +17,13 @@ class Main extends Component{
 //fetches posts from Express backend
 	getPosts = async () => {
 		try{
-			const fetchingPosts = await fetch('http://localhost:9000/', {
+			const fetchingPosts = await fetch('http://localhost:9000/posts/', {
 				credentials: 'include',
 				method: 'GET'
 			});
 			console.log(fetchingPosts, '<-- fetching posts in get route')
 			if(fetchingPosts.status !== 200){
-				throw Error('404 frorm server');
+				throw Error('404 from server');
 			}
 			const postsResponse = await fetchingPosts.json();
 			console.log(postsResponse, '<-- post response');
@@ -38,7 +38,31 @@ class Main extends Component{
 //creating posts and sending it to Express
 	addPost = async (post, e) => {
 		e.preventDefault();
-		console.log(post, e, '<-- post and target inside of addPost')
+		console.log(post, e, '<-- post and target inside of addPost');
+		try{
+			const createdPost = await fetch('http://localhost:9000/posts/', {
+				method: 'POST',
+				credentials: 'include',
+				body: JSON.stringify(post),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(createdPost, '<-- post created!');
+			if(createdPost !== 200){
+				throw Error('404 from server')
+			}
+			const createdPostResponse = await createdPost.json();
+			console.log(createdPostResponse.data, '<-- createdPostResponse')
+
+			this.setState({
+				posts: [...this.state.posts, createdPostResponse.data]
+			})
+
+		}catch(err){
+			console.log(err, '<-- error in adding a post');
+			return err;
+		}
 	}
 
 
