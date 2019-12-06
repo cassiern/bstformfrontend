@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Main from './components/Main';
+import Auth from './components/Auth';
 
 function App() {
   return (
     <div>
-      <Main />
+      <Auth />
     </div>
   );
 }
