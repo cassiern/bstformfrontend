@@ -49,14 +49,14 @@ class Main extends Component{
 				}
 			})
 			console.log(createdPost, '<-- post created!');
-			if(createdPost !== 200){
+			if(createdPost.status !== 200){
 				throw Error('404 from server')
 			}
 			const createdPostResponse = await createdPost.json();
 			console.log(createdPostResponse.data, '<-- createdPostResponse')
 
 			this.setState({
-				posts: [...this.state.posts, createdPostResponse.data]
+				posts: [...this.state.posts, createdPostResponse]
 			})
 
 		}catch(err){
@@ -72,7 +72,7 @@ class Main extends Component{
 				<h1>Main Page</h1>
 				<CreatedPosts addPost={this.addPost}/> 
 				<ul>
-					{this.state.posts}
+					{this.state.posts.data}
 				</ul>
 			</div>
 		)
