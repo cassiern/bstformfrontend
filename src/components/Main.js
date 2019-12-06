@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import CreatedPosts from './posts/CreatePosts';
 import EditPosts from './posts/EditPosts';
-
+import ListPosts from './posts/ListPosts';
 
 class Main extends Component{
 	constructor(){
 		super();
 		this.state = {
 			posts: [],
+			createAPost: false,
 			showEditModal: false,
 			postToEdit: {
 				_id: null,
@@ -63,6 +64,7 @@ class Main extends Component{
 			console.log(createdPostResponse.data, '<-- createdPostResponse')
 
 			this.setState({
+					posts: [...this.state.posts, createdPostResponse.data],
 					text: createdPostResponse.data.text,
 					image: createdPostResponse.data.image
 			})
@@ -75,23 +77,90 @@ class Main extends Component{
 	}
 
 	//updating posts
-	editPosts = async (postId) => {
+	editPosts = async (e) => {
+		e.preventDefault();
+		try{
+			const editRequest = await fetch('http://localhost:9000/posts/' + this.state.postToEdit._id, {
+				method: 'PUT',
+				credentials: 'include',
+				body: JSON.stringify(this.state.postToEdit),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			if(editRequest.status !== 200){
+				throw Error('Edit request rejected');
+			}
+			const editResponse = await editRequest.json();
+			const editedPostArray = this.state.posts.map((post) => {
+				if(post._id === editResponse.data._id){
+					post = editResponse.data
+				}
+				return post;
+			})
+			this.setState({
+				posts: editedPostArray,
+				showEditModal: false
+			})
+			console.log(editResponse, '<-- edited response');
+		}catch(err){
+			console.log(err, '<-- error in edit route');
+			return err;
+		}
+	}
+	showModal = (post) => {
+		console.log(post, '<-- post id in the modal');
+		this.setState({
+			postToEdit: post,
+			showEditModal: !this.state.showEditModal
+		})
+	}
+	handleFormChange = (e) => {
+		this.setState({
+			postToEdit: {
+				...this.state.postToEdit,
+				[e.target.name]: e.target.value
+			}
+		})
+	}
+	deletePost = async(id) => {
+		console.log(id, '<-- id to be deleted');
+		try{
+			const deletePost = await fetch('http://localhost:9000/posts/' + id, {
+				method: 'DELETE',
+				//credentials: 'inlcude',
+			})
+			if(deletePost.status !== 200){
+				throw Error('Error with deleting a post');
+			}
 
+			const deletePostJson = await deletePost.json();
+			console.log(deletePostJson, '<-- JSON DELETED POST')
+			this.setState({
+				posts: this.state.posts.filter((post) => post._id !== id)
+			})
+
+		}catch(err){
+			console.log(err, '<-- error in delete route')
+			return err;
+		}
 	}
 
-
-
+	createNewPost = (e) => {
+		this.setState({
+			createAPost: !this.state.createAPost
+		})
+	}
 
 
 	render(){
 		return(
 			<div>
 				<h1>Main Page</h1>
-				<CreatedPosts addPost={this.addPost}/> 
-				<div>
-					<h2>{this.state.text}</h2>
-					<img src={this.state.image} />
-				</div>
+				{this.state.createAPost ? <CreatedPosts addPost={this.addPost} createNewPost={this.createNewPost}/> : <button onClick={this.createNewPost}>Add Post</button> }
+				<ListPosts posts={this.state.posts} showModal={this.showModal} deletePost={this.deletePost}/>
+				
+				{this.state.showEditModal ? <EditPosts editPosts={this.editPosts} postToEdit={this.state.postToEdit} handleFormChange={this.handleFormChange}/> : null}
 
 			</div>
 		)
