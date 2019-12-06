@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-import CreatedPosts from './CreatePosts';
+import CreatedPosts from './posts/CreatePosts';
+import EditPosts from './posts/EditPosts';
 
 
 class Main extends Component{
 	constructor(){
 		super();
 		this.state = {
-			posts: []
+			posts: [],
+			showEditModal: false,
+			postToEdit: {
+				_id: null,
+				text: '',
+				image: ''
+			}
 		}
+	}
 
-	// componentDidMount(){
-	// 	this.getPosts();
-	// }
-}
+	componentDidMount = () => {
+		this.getPosts();
+	}
 
-//fetches posts from Express backend
+//fetches posts from Express
 	getPosts = async () => {
 		try{
 			const fetchingPosts = await fetch('http://localhost:9000/posts/', {
@@ -56,8 +63,10 @@ class Main extends Component{
 			console.log(createdPostResponse.data, '<-- createdPostResponse')
 
 			this.setState({
-				posts: [...this.state.posts, createdPostResponse]
+					text: createdPostResponse.data.text,
+					image: createdPostResponse.data.image
 			})
+			console.log(this.state, '<-- STATE AFTER ADDING POST')
 
 		}catch(err){
 			console.log(err, '<-- error in adding a post');
@@ -65,15 +74,25 @@ class Main extends Component{
 		}
 	}
 
+	//updating posts
+	editPosts = async (postId) => {
+
+	}
+
+
+
+
 
 	render(){
 		return(
 			<div>
 				<h1>Main Page</h1>
 				<CreatedPosts addPost={this.addPost}/> 
-				<ul>
-					{this.state.posts.data}
-				</ul>
+				<div>
+					<h2>{this.state.text}</h2>
+					<img src={this.state.image} />
+				</div>
+
 			</div>
 		)
 	}
