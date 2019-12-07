@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Auth from './components/Auth';
+import Main from './components/Main';
+import './public/style.css';
+import './style.css';
 
-function App() {
+class App extends Component {
+	constructor(){
+		super();
+		this.state = {
+			isLogged: false
+		}
+	}  
+render(){
   return (
-    <div>
-      <Auth />
+    <div className="background">
+    {this.state.isLogged ? <Main /> : <Auth isLogged={this.state.isLogged}/> }
     </div>
   );
 }
-
+}
 export default App;

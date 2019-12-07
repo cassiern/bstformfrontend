@@ -8,11 +8,11 @@ const EditPost = (props) => {
 	return(
 		<div>
 			<form onSubmit={props.editPosts}>
-			<label>Edit Text: </label>
-				<input type="text" name="text" onChange={props.handleFormChange} value={props.postToEdit.text}/><br />
-			<label>Edit Image: </label>
-				<input type="text" name="image" onChange={props.handleFormChange} value={props.postToEdit.image}/><br />
-				<button type="submit">Update</button>
+			<label className="mainText">Edit Text: </label>
+				<input className="firstInputs" type="text" name="text" onChange={props.handleFormChange} value={props.postToEdit.text}/><br />
+			<label className="mainText">Edit Image: </label>
+				<input className="firstInputs" type="text" name="image" onChange={props.handleFormChange} value={props.postToEdit.image}/><br />
+				<button className="closeBtns" type="submit">Update</button>
 			</form>
 		</div>
 		)

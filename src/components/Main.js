@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import CreatedPosts from './posts/CreatePosts';
 import EditPosts from './posts/EditPosts';
 import ListPosts from './posts/ListPosts';
+import Auth from './Auth';
+import '../public/style.css';
+import './../style.css';
+// import Login from './login/login';
+// import Register from './register/register';
+
 
 class Main extends Component{
 	constructor(){
@@ -10,6 +16,13 @@ class Main extends Component{
 			posts: [],
 			createAPost: false,
 			showEditModal: false,
+			currentUser: {
+				isLogged: false,
+				isMember: false,
+				email: '',
+				password: ''
+			},
+
 			postToEdit: {
 				_id: null,
 				text: '',
@@ -153,11 +166,12 @@ class Main extends Component{
 	}
 
 
+
 	render(){
 		return(
 			<div>
-				<h1>Main Page</h1>
-				{this.state.createAPost ? <CreatedPosts addPost={this.addPost} createNewPost={this.createNewPost}/> : <button onClick={this.createNewPost}>Add Post</button> }
+				<h1 className="mainText">Main Page</h1>
+				{this.state.createAPost ? <CreatedPosts addPost={this.addPost} createNewPost={this.createNewPost}/> : <button className="btn" onClick={this.createNewPost}>Add Post</button> }
 				<ListPosts posts={this.state.posts} showModal={this.showModal} deletePost={this.deletePost}/>
 				
 				{this.state.showEditModal ? <EditPosts editPosts={this.editPosts} postToEdit={this.state.postToEdit} handleFormChange={this.handleFormChange}/> : null}
