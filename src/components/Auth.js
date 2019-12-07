@@ -73,7 +73,7 @@ class Auth extends Component {
 				},
 				isLogged: true
 			})
-			this.props.isLogged.bind(null, this.state.isLogged)
+			this.props.isLogged.bind(null, this.state);
 		}
 		}catch(err){
 			return(err)

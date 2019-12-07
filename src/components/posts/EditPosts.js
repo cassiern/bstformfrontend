@@ -12,7 +12,10 @@ const EditPost = (props) => {
 				<input className="firstInputs" type="text" name="text" onChange={props.handleFormChange} value={props.postToEdit.text}/><br />
 			<label className="mainText">Edit Image: </label>
 				<input className="firstInputs" type="text" name="image" onChange={props.handleFormChange} value={props.postToEdit.image}/><br />
-				<button className="closeBtns" type="submit">Update</button>
+				
+				<div className="btn-container">
+					<button className="closeBtns" type="submit">Update</button>
+				</div>
 			</form>
 		</div>
 		)

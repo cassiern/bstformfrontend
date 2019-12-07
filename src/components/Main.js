@@ -5,6 +5,7 @@ import ListPosts from './posts/ListPosts';
 import Auth from './Auth';
 import '../public/style.css';
 import './../style.css';
+import Navbar from './navbar/navbar';
 // import Login from './login/login';
 // import Register from './register/register';
 
