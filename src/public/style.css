@@ -11552,6 +11552,14 @@ video {
   margin-right: 3rem;
 }
 
+.extra-forms {
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
@@ -54663,7 +54671,6 @@ video {
     z-index: auto;
   }
 }
-
 
 
 

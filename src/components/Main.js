@@ -172,7 +172,7 @@ class Main extends Component{
 		return(
 			<div>
 				<h1 className="mainText">Main Page</h1>
-				{this.state.createAPost ? <CreatedPosts addPost={this.addPost} createNewPost={this.createNewPost}/> : <button className="btn" onClick={this.createNewPost}>Add Post</button> }
+				{this.state.createAPost ? <CreatedPosts addPost={this.addPost} createNewPost={this.createNewPost}/> : <div className="btn-container"> <button className="btn" onClick={this.createNewPost}>Add Post</button> </div>}
 				<ListPosts posts={this.state.posts} showModal={this.showModal} deletePost={this.deletePost}/>
 				
 				{this.state.showEditModal ? <EditPosts editPosts={this.editPosts} postToEdit={this.state.postToEdit} handleFormChange={this.handleFormChange}/> : null}

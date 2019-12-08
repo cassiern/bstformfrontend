@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../public/style.css';
 
 class CreatedPosts extends Component {
 	constructor(){
@@ -15,7 +16,7 @@ class CreatedPosts extends Component {
 	}
 	render(){
 		return(
-			<div>
+			<div className="auth-container">
 			<form onSubmit={this.props.addPost.bind(null, this.state)}>
 				<input className="firstInputs" placeholder="Add Text" type="text" name="text" onChange={this.updatePosts} value={this.state.text}/> <br />
 				<input className="firstInputs" placeholder="Add Image" type="text" name="image" onChange={this.updatePosts} value={this.state.image}/> <br />

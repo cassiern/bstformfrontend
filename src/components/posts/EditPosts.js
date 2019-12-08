@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../public/style.css';
 
 const EditPost = (props) => {
 
@@ -6,7 +7,7 @@ const EditPost = (props) => {
 
 
 	return(
-		<div>
+		<div className="auth-container">
 			<form onSubmit={props.editPosts}>
 			<label className="mainText">Edit Text: </label>
 				<input className="firstInputs" type="text" name="text" onChange={props.handleFormChange} value={props.postToEdit.text}/><br />
