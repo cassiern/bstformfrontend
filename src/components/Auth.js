@@ -90,7 +90,7 @@ class Auth extends Component {
 
 	render(props){
 		return(
-			<div>
+			<div className="auth-container">
 		{!this.state.hideAuth ?  
 			<div>
 			{!this.state.isMember ?

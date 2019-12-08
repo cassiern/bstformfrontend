@@ -11411,7 +11411,10 @@ video {
   margin-right: 3rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  margin-left: 16rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
   border-radius: 0.25rem;
   color: #2c5282;
 }
@@ -11424,7 +11427,10 @@ video {
   margin-right: 3rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  margin-left: 16rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
   border-radius: 0.25rem;
   color: #2c5282;
 }
@@ -11461,27 +11467,29 @@ video {
 
 .firstInputs {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem;
   margin-left: 3rem;
   margin-right: 3rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  margin-left: 16rem;
-  padding: 0.5rem;
   border-color: #a0aec0;
   border-radius: 0.25rem;
   color: #4a5568;
+  display: -webkit-box;
+  display: flex;
   -webkit-box-pack: center;
           justify-content: center;
 }
 
 .mainText {
   font-weight: 700;
-  margin-left: 16rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   color: #edf2f7;
   padding-left: 1px;
   padding-right: 1px;
-  -webkit-box-align: center;
-          align-items: center;
+  display: -webkit-box;
+  display: flex;
   -webkit-box-pack: center;
           justify-content: center;
 }
@@ -11508,8 +11516,7 @@ video {
   border-width: 2px;
   border-color: #e2e8f0;
   border-radius: 0.25rem;
-  -webkit-box-pack: center;
-          justify-content: center;
+  justify-content: space-around;
 }
 
 .img:hover {
@@ -11530,7 +11537,19 @@ video {
 .logout {
   color: #000;
   text-decoration: underline;
-  margin-right: 4rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.auth-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 @media (min-width: 640px) {
@@ -54644,7 +54663,6 @@ video {
     z-index: auto;
   }
 }
-
 
 
 
