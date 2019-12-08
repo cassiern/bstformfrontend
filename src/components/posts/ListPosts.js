@@ -10,7 +10,7 @@ const ListPosts = (props) => {
 				<span className="mainText"><strong>{post.text}</strong></span><br />
 				<div className="image-container">
 					<div className="image-border">
-						<img src={post.image} className="img"/><br />
+						<img src={post.image} className="img" alt=""/><br />
 					</div>
 				</div>
 				<div className="btn-container"> 

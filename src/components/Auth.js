@@ -64,12 +64,13 @@ class Auth extends Component {
 		if(newUser.status !== 200){
 			throw Error('something went wrong in register route')
 		}else{
+			console.log(newUser, '<-- NEW USER')
 			const createUserResponse = await newUser.json();
-			console.log(createUserResponse, '<-- server response')
+			//console.log(createUserResponse, '<-- create user response')
 			this.setState({
 				currentUser: {
-					email: newUser.email,
-					password: newUser.password
+					email: createUserResponse.email,
+					password: createUserResponse.password
 				},
 				isLogged: true
 			})
@@ -92,7 +93,7 @@ class Auth extends Component {
 		<div>	
 			<h2 className="mainText">Register</h2><br />
 			<form onSubmit={this.registeringUser}>
-				<input className="firstInputs" type="email" placeholder="Email" onChange={this.handleRegisterChange} name="email" value={this.state.currentUser.email}/><br />
+				<input className="firstInputs" type="text" placeholder="Email" onChange={this.handleRegisterChange} name="email" value={this.state.currentUser.email}/><br />
 				<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleRegisterChange} name="password" value={this.state.currentUser.password} /><br />		
 				<button className="btn">Register</button>
 			</form>
