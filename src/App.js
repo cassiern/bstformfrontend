@@ -13,11 +13,18 @@ class App extends Component {
 			isLogged: false
 		}
 	}  
+
+	// isLoggedFunc = (data) => {
+	// 	this.setState({
+	// 		isLogged: true
+	// 	})
+	// }
+
 render(){
   return (
     <div className="background">
     <Navbar />
-    {this.state.isLogged ? <Main /> : <Auth isLogged={this.state.isLogged}/> }
+    <Auth/> 
     </div>
   );
 }

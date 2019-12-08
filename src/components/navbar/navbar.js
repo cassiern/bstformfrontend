@@ -7,7 +7,7 @@ function Navbar(){
 
 	return(
 		<div className="navbar-container">
-			<a href="http://localhost:3000/login" className="logout">Logout</a>
+			<a href="http://localhost:3000/" className="logout">Logout</a>
 		</div>
 
 		)

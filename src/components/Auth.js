@@ -9,6 +9,7 @@ class Auth extends Component {
 		super();
 		this.state = {
 			isLogged: false,
+			hideAuth: false,
 			isMember: false,
 			currentUser: {
 				email: '',
@@ -43,7 +44,8 @@ class Auth extends Component {
 		e.preventDefault();
 		console.log('this is the login')
 		this.setState({
-			isLogged: true
+			isLogged: true,
+			hideAuth: true
 		})
 	}
 
@@ -72,9 +74,9 @@ class Auth extends Component {
 					email: createUserResponse.email,
 					password: createUserResponse.password
 				},
-				isLogged: true
+				isLogged: true,
+				hideAuth: true				
 			})
-			this.props.isLogged.bind(null, this.state);
 		}
 		}catch(err){
 			return(err)
@@ -86,33 +88,38 @@ class Auth extends Component {
 		})
 	}
 
-	render(){
+	render(props){
 		return(
 			<div>
-		{!this.state.isMember ? 
-		<div>	
-			<h2 className="mainText">Register</h2><br />
-			<form onSubmit={this.registeringUser}>
-				<input className="firstInputs" type="text" placeholder="Email" onChange={this.handleRegisterChange} name="email" value={this.state.currentUser.email}/><br />
-				<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleRegisterChange} name="password" value={this.state.currentUser.password} /><br />		
-				<button className="btn">Register</button>
-			</form>
-			<button onClick={this.alreadyAMember} className="btn">Already a member?</button>
+		{!this.state.hideAuth ?  
+			<div>
+			{!this.state.isMember ?
+			<div>	
+				<h2 className="mainText">Register</h2><br />
+				<form onSubmit={this.registeringUser}>
+					<input className="firstInputs" type="text" placeholder="Email" onChange={this.handleRegisterChange} name="email" value={this.state.currentUser.email}/><br />
+					<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleRegisterChange} name="password" value={this.state.currentUser.password} /><br />		
+					<button className="btn">Register</button>
+				</form>
+				<button onClick={this.alreadyAMember} className="btn">Already a member?</button>
+				</div>
+				:
+				<div>
+				<h2 className="mainText">Login</h2><br />
+				<form onSubmit={this.loggingIn}>
+					<input className="firstInputs" type="email" placeholder="Email" onChange={this.handleLoginChange} name="email" value={this.state.currentUser.email}/><br />
+					<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleLoginChange} name="password" value={this.state.currentUser.password}/><br />			
+					<button type="submit" className="btn">Login</button><br />		
+				</form>
+				<button onClick={this.alreadyAMember} className="btn">Not a member?</button>
+				</div>
+			}
 			</div>
 			:
 			<div>
-			<h2 className="mainText">Login</h2><br />
-			<form onSubmit={this.loggingIn}>
-				<input className="firstInputs" type="email" placeholder="Email" onChange={this.handleLoginChange} name="email" value={this.state.currentUser.email}/><br />
-				<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleLoginChange} name="password" value={this.state.currentUser.password}/><br />			
-				<button type="submit" className="btn">Login</button><br />		
-			</form>
-			<button onClick={this.alreadyAMember} className="btn">Not a member?</button>
+			<Main /> 
 			</div>
-		}
-			
-			{this.state.isLogged ? <Main /> : null }
-			
+			}
 			</div>
 			)
 	}
