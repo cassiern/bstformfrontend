@@ -5,8 +5,8 @@ import '../../style.css';
 const ListPosts = (props) => {
 	const postList = props.posts.map((post) => {
 		return (
-			<div>
-			<li key={post._id}>
+			<div  key={post._id}>
+			<li>
 				<span className="mainText"><strong>{post.text}</strong></span><br />
 				<div className="image-container">
 					<div className="image-border">
