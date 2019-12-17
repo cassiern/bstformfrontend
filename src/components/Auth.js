@@ -8,12 +8,12 @@ class Auth extends Component {
 	constructor(){
 		super();
 		this.state = {
-			isLogged: false,
 			hideAuth: false,
-			isMember: false,
 			currentUser: {
 				email: '',
-				password: ''
+				password: '',
+				isLogged: false,
+				isMember: false
 			}
 		}
 	}
@@ -23,16 +23,20 @@ class Auth extends Component {
 		//e.preventDefault();
 		this.setState({
 			currentUser: {
+				...this.state.currentUser,
 				[e.currentTarget.name]: e.currentTarget.value
 
 			}
+		}, ()=>{
+			console.log(this.state, '<-- state after setting it')
 		})
-		console.log(this.state, '<-- state after setting it')
+		
 	}
 	handleLoginChange = (e) => {
 		//e.preventDefault();
 		this.setState({
 			currentUser: {
+				...this.state.currentUser,
 				[e.currentTarget.name]: e.currentTarget.value
 
 			}
@@ -40,51 +44,102 @@ class Auth extends Component {
 		console.log(this.state, '<-- state after setting it')
 	}
 
-	loggingIn = (e, props) => {
+	loggingInUser = async(e, props) => {
 		e.preventDefault();
-		console.log('this is the login')
-		this.setState({
-			isLogged: true,
-			hideAuth: true
-		})
+		try{
+			const userLogin = await fetch('http://localhost:9000/user/login', {
+				method: 'POST',
+				credentials: 'include',
+				body: JSON.stringify(this.state.currentUser),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+			console.log(userLogin, '<-- user login fetched')
+			const parsedLogin = await userLogin.json();
+
+			if(parsedLogin.status.code === 200){
+				//console.log('User Logged in!!');
+				console.log(parsedLogin.data.email, '<-- what you are setting the logged in state as')
+				this.setState({
+					currentUser: {
+						email: parsedLogin.data.email,
+						id: parsedLogin.data.password,
+						isLogged: true,
+						isMember: true
+					}
+				})
+				console.log(this.state.currentUser, '<-- current user in the login route')
+				this.props.passCurrentUser(this.state.currentUser);
+			}
+
+		}catch(err){
+
+		}
 	}
+
+//LOGOUT ROUTE
+	// logoutUser = async (e, props) => {
+	// 	e.preventDefault();
+	// 	try{
+	// 		console.log(this.state.currentUser, '<-- current user about to be deleted');
+	// 		const deletedUser = await fetch('http://localhost:9000/user/logout', {
+				
+	// 		})
+
+	// 	}catch(err){
+	// 		return err;
+	// 	}
+	// }
+
+
 
 
 	registeringUser = async (e, props) => {
 		e.preventDefault();
 		console.log(this.state.currentUser, '<-- current user in the register')
 		try{
-		const newUser = await fetch('http://localhost:9000/user/register', {
+			console.log(this.state.currentUser)
+			const newUser = await fetch('http://localhost:9000/user/register', {
 			method: 'POST',
 			credentials: 'include',
 			body: JSON.stringify(this.state.currentUser),
 			headers: {
 				'Content-Type': 'application/json'
-			}
-		})
-		console.log(newUser, '<-- USER CREATED');
-		if(newUser.status !== 200){
-			throw Error('something went wrong in register route')
-		}else{
-			console.log(newUser, '<-- NEW USER')
-			const createUserResponse = await newUser.json();
-			//console.log(createUserResponse, '<-- create user response')
-			this.setState({
-				currentUser: {
-					email: createUserResponse.email,
-					password: createUserResponse.password
-				},
-				isLogged: true,
-				hideAuth: true				
+				}
 			})
-		}
+				
+			console.log(newUser, '<-- USER CREATED');
+				
+				if(newUser.status !== 200){
+					throw Error('something went wrong in register route')
+				} else{
+					// console.log(newUser, '<-- NEW USER')
+					const createUserResponse = await newUser.json()
+					// console.log(createUserResponse.data, '<-- create user response')
+					this.setState({
+						currentUser: {
+							email: createUserResponse.data.email,
+							id: createUserResponse.data.id,
+							isLogged: true,
+							hideAuth: true	
+						},
+			
+					}, ()=>{
+						console.log(this.state.currentUser)
+						this.props.passCurrentUser(this.state.currentUser);
+					})
+					
+				}
 		}catch(err){
 			return(err)
 		}
 	}
 	alreadyAMember = () => {
 		this.setState({
-			isMember: !this.state.isMember
+			currentUser: {
+				isMember: !this.state.currentUser.isMember
+			}
 		})
 	}
 
@@ -93,7 +148,7 @@ class Auth extends Component {
 			<div className="auth-container">
 		{!this.state.hideAuth ?  
 			<div>
-			{!this.state.isMember ?
+			{!this.state.currentUser.isMember ?
 			<div>	
 				<h2 className="mainText">Register</h2><br />
 				<form onSubmit={this.registeringUser}>
@@ -106,7 +161,7 @@ class Auth extends Component {
 				:
 				<div>
 				<h2 className="mainText">Login</h2><br />
-				<form onSubmit={this.loggingIn}>
+				<form onSubmit={this.loggingInUser}>
 					<input className="firstInputs" type="email" placeholder="Email" onChange={this.handleLoginChange} name="email" value={this.state.currentUser.email}/><br />
 					<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleLoginChange} name="password" value={this.state.currentUser.password}/><br />			
 					<button type="submit" className="btn">Login</button><br />		
@@ -125,3 +180,16 @@ class Auth extends Component {
 	}
 }
 export default Auth;
+
+
+
+
+//delete this once login is actually working
+	// loggingIn = (e, props) => {
+	// 	e.preventDefault();
+	// 	console.log('this is the login')
+	// 	this.setState({
+	// 		isLogged: true,
+	// 		hideAuth: true
+	// 	})
+	// }
