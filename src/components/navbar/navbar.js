@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {
+	BrowserRouter as Router,
+	Link
+} from 'react-router-dom';
 //import App from '../../App';
 import '../../public/style.css';
+import Profile from '../users/Profile';
+
+class Navbar extends Component{
+	constructor(props){
+		super();
+		this.state = {
+			showProfile: false
+		}
+	}
+
+	// showProfile = () => {
+	// 	this.setState({
+	// 		showProfile: true
+	// 	})
+
+	// }
 
 
-function Navbar(props){
 
 
+render(props){
 	return(
 		<div className="navbar-container">
-			<a href="http://localhost:3000" className="logout" onClick={props.logout}>Logout</a>
-		</div>
+		<Router>
+			<Link to="/" className="logout" onClick={this.props.logout}>Logout</Link>
+			<Link to="/profile" className="profile" onClick={() => this.setState({ showProfile: !this.state.showProfile})}>Profile</Link>
+			<Link to="/home" className="home" onClick={() => {console.log('home clicked')}} />
+		</Router>
 
+		{this.state.showProfile ? 
+			<Profile />
+			:
+			null
+		}
+		
+
+		</div>
 		)
+}
 }
 export default Navbar;

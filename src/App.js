@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Route, Switch ,BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Auth from './components/Auth';
 import Main from './components/Main';
 import Navbar from './components/navbar/navbar';
+import Profile from './components/users/Profile';
 import './public/style.css';
 import './style.css';
 
@@ -38,14 +40,25 @@ class App extends Component {
   }
 render(){
   return (
-    <div className="background">
-    <Navbar logout={this.logout}/>
-    {this.state.currentUser.isLogged ?
-      <Main />
-      : 
-      <Auth passCurrentUser = {this.getCurrentUser}/> 
-    }
+      <div className="background">
+        <Navbar logout={this.logout} />
+        <Router>
+          <Switch>
+            <Route exact path='/' render={(props) => <Auth passCurrentUser = {this.getCurrentUser}/>}/>
+            <Route exact path='/home' render={() => <Main /> } />
+            <Route exact path='/profile' render={() => <Profile /> }/>
+          </Switch>
+        </Router>
+
+
     </div>
+
+    // {this.state.currentUser.isLogged ?
+    //   <Main />
+    //   : 
+    //   <Auth passCurrentUser = {this.getCurrentUser}/> 
+    // }
+
   );
 }
 }
