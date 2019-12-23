@@ -28,11 +28,10 @@ class Navbar extends Component{
 render(props){
 	return(
 		<div className="navbar-container">
-		<Router>
-			<Link to="/" className="logout" onClick={this.props.logout}>Logout</Link>
-			<Link to="/profile" className="profile" onClick={() => this.setState({ showProfile: !this.state.showProfile})}>Profile</Link>
-			<Link to="/home" className="home" onClick={() => {console.log('home clicked')}} />
-		</Router>
+
+			<a href="http://localhost:3000" className="logout" onClick={props.logout}>Logout</a>
+			<a href="#" className="Profile" onClick={props.showProfile}>Profile</a>
+		</div>
 
 		{this.state.showProfile ? 
 			<Profile />
