@@ -171,9 +171,9 @@ class Auth extends Component {
 			}
 			</div>
 			:
-			<div>
-			<Main /> 
-			</div>
+				<div>
+				<Main /> 
+				</div>
 			}
 			</div>
 			)

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Route, Switch ,BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Auth from './components/Auth';
 import Main from './components/Main';
 import Navbar from './components/navbar/navbar';
-import Profile from './components/users/Profile'
+import Profile from './components/users/Profile';
 import './public/style.css';
 import './style.css';
 
@@ -63,6 +64,13 @@ render(){
       }
     </div>
     </div>
+
+    // {this.state.currentUser.isLogged ?
+    //   <Main />
+    //   : 
+    //   <Auth passCurrentUser = {this.getCurrentUser}/> 
+    // }
+
   );
 }
 }
