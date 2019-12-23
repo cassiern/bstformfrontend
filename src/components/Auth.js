@@ -60,11 +60,11 @@ class Auth extends Component {
 
 			if(parsedLogin.status.code === 200){
 				//console.log('User Logged in!!');
-				console.log(parsedLogin.data.email, '<-- what you are setting the logged in state as')
+				console.log(parsedLogin.data.id, '<-- id in AUTH')
 				this.setState({
 					currentUser: {
 						email: parsedLogin.data.email,
-						id: parsedLogin.data.password,
+						id: parsedLogin.data.id,
 						isLogged: true,
 						isMember: true
 					}
@@ -180,16 +180,3 @@ class Auth extends Component {
 	}
 }
 export default Auth;
-
-
-
-
-//delete this once login is actually working
-	// loggingIn = (e, props) => {
-	// 	e.preventDefault();
-	// 	console.log('this is the login')
-	// 	this.setState({
-	// 		isLogged: true,
-	// 		hideAuth: true
-	// 	})
-	// }

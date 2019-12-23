@@ -3,6 +3,7 @@ import './App.css';
 import Auth from './components/Auth';
 import Main from './components/Main';
 import Navbar from './components/navbar/navbar';
+import Profile from './components/users/Profile'
 import './public/style.css';
 import './style.css';
 
@@ -11,7 +12,8 @@ class App extends Component {
     super();
     this.state = {
       isLogged: false,
-      currentUser: {}
+      currentUser: {},
+      showUserProfile: false
     }
   }  
 
@@ -27,6 +29,14 @@ class App extends Component {
     console.log(this.state, '<-- this is state after logging out')
   }
 
+  showProfile = (e) => {
+    e.preventDefault();
+    this.setState({
+      showUserProfile: true
+    })
+    console.log(this.state, '<-- profile has been clicked and passed to APP')
+  }
+
 
   getCurrentUser = (currentUser)=>{
     this.setState({
@@ -39,12 +49,19 @@ class App extends Component {
 render(){
   return (
     <div className="background">
-    <Navbar logout={this.logout}/>
+    <Navbar logout={this.logout} showProfile={this.showProfile}/>
     {this.state.currentUser.isLogged ?
       <Main />
       : 
       <Auth passCurrentUser = {this.getCurrentUser}/> 
     }
+    <div>
+      {this.state.showUserProfile && this.state.isLogged ?
+        <Profile currentUser={this.state.currentUser}/>
+        :
+        null
+      }
+    </div>
     </div>
   );
 }
