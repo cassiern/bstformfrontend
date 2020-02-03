@@ -151,12 +151,12 @@ class Auth extends Component {
 			{!this.state.currentUser.isMember ?
 			<div>	
 				<h2 className="mainText">Register</h2><br />
-				<form onSubmit={this.registeringUser}>
-					<input className="firstInputs" type="text" placeholder="Email" onChange={this.handleRegisterChange} name="email" value={this.state.currentUser.email}/><br />
-					<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleRegisterChange} name="password" value={this.state.currentUser.password} /><br />		
-					<button className="btn">Register</button>
+				<form onSubmit={this.registeringUser} className="register-form">
+					<input className="firstInputs-register-email" type="text" placeholder="Email" onChange={this.handleRegisterChange} name="email" value={this.state.currentUser.email}/><br />
+					<input className="firstInputs-register-password" type="password" placeholder="Password" onChange={this.handleRegisterChange} name="password" value={this.state.currentUser.password} /><br />		
+					<button className="btn-reg">Register</button>
 				</form>
-				<button onClick={this.alreadyAMember} className="btn">Already a member?</button>
+				<button onClick={this.alreadyAMember} className="btn-next">Already a member?</button>
 				</div>
 				:
 				<div>
@@ -164,7 +164,7 @@ class Auth extends Component {
 				<form onSubmit={this.loggingInUser}>
 					<input className="firstInputs" type="email" placeholder="Email" onChange={this.handleLoginChange} name="email" value={this.state.currentUser.email}/><br />
 					<input className="firstInputs" type="password" placeholder="Password" onChange={this.handleLoginChange} name="password" value={this.state.currentUser.password}/><br />			
-					<button type="submit" className="btn">Login</button><br />		
+					<button type="submit" className="btn-login">Login</button><br />		
 				</form>
 				<button onClick={this.alreadyAMember} className="btn">Not a member?</button>
 				</div>

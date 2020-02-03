@@ -11,6 +11,28 @@
 .btn:hover {
 	@apply font-bold p-1 bg-gray-400 mx-12 my-2 flex justify-center rounded text-blue-800;
 }
+
+.btn-reg {
+	@apply font-bold p-1 bg-gray-200 mx-12 my-2 flex justify-center rounded text-blue-800;
+}
+.btn-reg:hover {
+	@apply font-bold p-1 bg-gray-400 mx-12 my-2 flex justify-center rounded text-blue-800;
+}
+
+.btn-login {
+	@apply font-bold p-1 bg-gray-200 mx-12 my-2 flex justify-center rounded text-blue-800;
+}
+.btn-login:hover {
+	@apply font-bold p-1 bg-gray-400 mx-12 my-2 flex justify-center rounded text-blue-800;
+}
+
+.btn-next {
+	@apply font-bold p-1 bg-gray-200 mx-12 my-2 flex justify-center rounded text-blue-800;	
+}
+.btn-next:hover {
+	@apply font-bold p-1 bg-gray-400 mx-12 my-2 flex justify-center rounded text-blue-800;
+}
+
 .btn-container {
 	@apply ml-64 justify-center;
 }
@@ -21,6 +43,12 @@
 	@apply font-bold p-1 bg-gray-400 shadow my-2 ml-2 rounded text-blue-800;
 }
 .firstInputs {
+	@apply shadow my-1 p-2 mx-12 border-gray-500 rounded text-gray-700 flex justify-center;
+}
+.firstInputs-register-email {
+	@apply shadow my-1 p-2 mx-12 border-gray-500 rounded text-gray-700 flex justify-center;
+}
+.firstInputs-register-password {
 	@apply shadow my-1 p-2 mx-12 border-gray-500 rounded text-gray-700 flex justify-center;
 }
 .mainText {

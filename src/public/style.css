@@ -11435,6 +11435,102 @@ video {
   color: #2c5282;
 }
 
+.btn-reg {
+  font-weight: 700;
+  padding: 0.25rem;
+  background-color: #edf2f7;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  border-radius: 0.25rem;
+  color: #2c5282;
+}
+
+.btn-reg:hover {
+  font-weight: 700;
+  padding: 0.25rem;
+  background-color: #cbd5e0;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  border-radius: 0.25rem;
+  color: #2c5282;
+}
+
+.btn-login {
+  font-weight: 700;
+  padding: 0.25rem;
+  background-color: #edf2f7;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  border-radius: 0.25rem;
+  color: #2c5282;
+}
+
+.btn-login:hover {
+  font-weight: 700;
+  padding: 0.25rem;
+  background-color: #cbd5e0;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  border-radius: 0.25rem;
+  color: #2c5282;
+}
+
+.btn-next {
+  font-weight: 700;
+  padding: 0.25rem;
+  background-color: #edf2f7;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  border-radius: 0.25rem;
+  color: #2c5282;
+}
+
+.btn-next:hover {
+  font-weight: 700;
+  padding: 0.25rem;
+  background-color: #cbd5e0;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  border-radius: 0.25rem;
+  color: #2c5282;
+}
+
 .btn-container {
   margin-left: 16rem;
   -webkit-box-pack: center;
@@ -11466,6 +11562,38 @@ video {
 }
 
 .firstInputs {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  border-color: #a0aec0;
+  border-radius: 0.25rem;
+  color: #4a5568;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.firstInputs-register-email {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  border-color: #a0aec0;
+  border-radius: 0.25rem;
+  color: #4a5568;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.firstInputs-register-password {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -11546,14 +11674,6 @@ video {
 .auth-container {
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  margin-left: 3rem;
-  margin-right: 3rem;
-}
-
-.extra-forms {
-  flex-wrap: wrap;
   -webkit-box-pack: center;
           justify-content: center;
   margin-left: 3rem;
@@ -54671,6 +54791,7 @@ video {
     z-index: auto;
   }
 }
+
 
 
 

@@ -6,7 +6,8 @@ class CreatedPosts extends Component {
 		super();
 		this.state = {
 			text: '',
-			image: ''
+			image: '',
+			place: ''
 		}
 	}
 	updatePosts = (e) => {
@@ -20,6 +21,7 @@ class CreatedPosts extends Component {
 			<form onSubmit={this.props.addPost.bind(null, this.state)}>
 				<input className="firstInputs" placeholder="Add Text" type="text" name="text" onChange={this.updatePosts} value={this.state.text}/> <br />
 				<input className="firstInputs" placeholder="Add Image" type="text" name="image" onChange={this.updatePosts} value={this.state.image}/> <br />
+				<input className="firstInputs" placeholder="Where is this?" type="text" name="place" onChange={this.updatePosts} value={this.state.place}/> <br />
 				<div className="btn-container">
 					<button className="closeBtns" type="submit">Submit</button>
 					<button className="closeBtns" type="button" onClick={this.props.createNewPost}>Close</button>

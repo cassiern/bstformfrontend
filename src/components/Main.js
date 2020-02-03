@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import CreatedPosts from './posts/CreatePosts';
 import EditPosts from './posts/EditPosts';
 import ListPosts from './posts/ListPosts';
-//import Auth from './Auth';
 import '../public/style.css';
 import './../style.css';
+//import MapContainer from './map/map.js';
 //import Navbar from './navbar/navbar';
-// import Login from './login/login';
-// import Register from './register/register';
+//import Login from './login/login';
+//import Register from './register/register';
+//import Auth from './Auth';
 
 
 class Main extends Component{
